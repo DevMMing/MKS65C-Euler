@@ -1,26 +1,28 @@
 #include <stdio.h>
-int diff;
-int sumsquare(int x){
+int smallMulti(int x){
+    int arr[x];
     int i;
-    int total;
-    int square;
-    for(i=1;i<=x;i++){
-        square=i*i;
-        total+=square;
+    for(i=0;i<x;i++){
+        arr[i]=i+1;
+    }
+    int j,k;
+    for(j=0;j<x;j++){
+        for(k=0;k<j;k++){
+            if(arr[j]%arr[k]==0){
+                arr[j]/=arr[k];
+            }
+        }
+    }
+    int multi,total;
+    total=arr[0];
+    for(multi=1;multi<x;multi++){
+        total*=arr[multi];
     }
     return total;
 }
-int squaresum(int x){
-    int i;
-    int total;
-    for(i=1;i<=x;i++){
-        total+=i;
-    }
-    return total*total;
-}
 int main()
 {
-    diff=squaresum(100)-sumsquare(100);
-    printf("Number 6: %d", diff);
+    printf("Number five: %d", smallMulti(20));
+
     return 0;
 }
